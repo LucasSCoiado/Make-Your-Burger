@@ -21,6 +21,13 @@
           <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">{{ carne.tipo }}</option>
         </select>
       </div>
+      <div class="input-container">
+        <label for="ponto">Escolha o ponto da carne</label>
+        <select name="ponto" id="ponto" v-model="ponto">
+          <option value="">Selecione o ponto da carne</option>
+          <option v-for="ponto in pontos" :key="ponto.id" :value="ponto.tipo">{{ ponto.tipo }}</option>
+        </select>
+      </div>
       <div id="opcionais-container" class="input-container">
         <label id="opcionais-title" for="opcionais">Selecione os opcionais:</label>
         <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
@@ -45,10 +52,12 @@ import Message from './Message.vue';
             return{
                 paes: null,
                 carnes: null,
+                pontos: null,
                 opcionaisdata: null,
                 nome: null,
                 pao: null,
                 carne: null,
+                ponto: null,
                 opcionais: [],
                 status: "Solicitado",
                 msg: null
@@ -63,6 +72,7 @@ import Message from './Message.vue';
                 this.paes = data.paes;
                 this.carnes = data.carnes;
                 this.opcionaisdata = data.opcionais;
+                this.pontos = data.pontos;
             },
             async createBurger(e) {
     e.preventDefault();
@@ -77,6 +87,7 @@ import Message from './Message.vue';
       nome: this.nome,
       carne: this.carne,
       pao: this.pao,
+      ponto: this.ponto,
       opcionais: Array.from(this.opcionais),
       status: "Solicitado"
     };
@@ -99,6 +110,7 @@ import Message from './Message.vue';
     // Limpar os campos
     this.nome = "";
     this.carne = "";
+    this.ponto= "";
     this.pao = "";
     this.opcionais = [];
   }

@@ -7,8 +7,9 @@
           <div>Cliente:</div>
           <div>Pão:</div>
           <div>Carne:</div>
+          <div>Ponto da carne: </div>
           <div>Opcionais:</div>
-          <div>Ações:</div>
+
         </div>
       </div>
       <div id="burger-table-rows">
@@ -17,6 +18,7 @@
           <div>{{ burger.nome }}</div>
           <div>{{ burger.pao }}</div>
           <div>{{ burger.carne }}</div>
+          <div>{{ burger.ponto }}</div>
           <div>
             <ul v-for="(opcional, index) in burger.opcionais" :key="index">
               <li>{{ opcional }}</li>
@@ -61,7 +63,9 @@
           const data = await req.json()
   
           this.burgers = data
-  
+          
+          console.log(data);
+
           // Resgata os status de pedidos
           this.getStatus()
   
